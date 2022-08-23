@@ -1,42 +1,33 @@
 #include<iostream>
 using namespace std;
 
-void display(int arr[], int size){
-    for(int i=0; i<size; i++)   cout<<arr[i]<<" ";
-}
-
-void deletion(int arr[], int size){
-    
-
-    int _size=size;
-    for(int i=0; i<_size; i++){
-        if(arr[i]==arr[i+1]){
-            for(int j=i; j<_size; j++){
-                arr[j]=arr[j+1];
-            }
-            i--;
-            _size--;
-        }
-    }
-
-    // for(int i=0; i<_size; i++){
-    //     cout<<arr[i]<<" ";
-    // }
-
-    display(arr, _size);
-}
-
-int main(){
-    int size;
-    int arr[size];
-    cin>>size;
-    if(size<2){
-        cout<<"Invalid Input";
+int main()
+{
+    int number;
+    int arr[20];
+    cin >> number;
+    if (number <2)
+    {
+        cout << "Invalid Input" << endl;
         return 0;
     }
-
-    for(int i=0; i<size; i++)   cin>>arr[i];
-
-    deletion(arr, size);
-
+    for (int i = 0; i < number; i++)
+    {
+        cin >> arr[i];
+    }
+    for (int i = 0; i < number; i++)
+        if (arr[i] == arr[i + 1])
+        {
+            for (int j = i + 1; j < number; j++)
+            {
+                arr[j - 1] = arr[j];
+            }
+            i--;
+            number--;
+        }
+    for (int i = 0; i < number+1; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
