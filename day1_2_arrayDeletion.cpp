@@ -4,8 +4,8 @@ using namespace std;
 int main()
 {
     int number;
-    int arr[20];
     cin >> number;
+    int arr[20];
     if (number <2)
     {
         cout << "Invalid Input" << endl;
