@@ -49,8 +49,8 @@ int main(){
         }
     }
 
-    cout<<"---------"<<min<<"   "<<max<<endl;
-    cout<<"---------"<<min_key<<"   "<<max_key<<endl;
+    // cout<<"---------"<<min<<"   "<<max<<endl;
+    // cout<<"---------"<<min_key<<"   "<<max_key<<endl;
     for(int i=0; i<8; i++){
         if(i==max_key){
             arr[i]=min;
