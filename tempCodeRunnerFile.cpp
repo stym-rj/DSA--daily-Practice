@@ -27,12 +27,7 @@ void deletion(int arr[], int size){
 }
 
 int main(){
-    string arr[3];
-    
-    for(int i=0; i<3; i++){
-        cin>>arr[i];
-    }
-
-    cout<<arr[1];
+    int arr[98]={0};
+    cout<<arr[45];
 
 }
