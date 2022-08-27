@@ -3,26 +3,25 @@ using namespace std;
 int main(){
     int size;
     cin>>size;
+    if(size<1 || size>20){
+        cout<<"Invalid size of array";
+        return 0;
+    }
 
-    int arr[size];
-    for(int i=0;i<size; i++)    cin>>arr[i];
+    char arr[size*2];
 
-    int key;
-    cin>>key;
+    for(int i=0; i<size; i++)   cin>>arr[i];
 
-    int temp=-1;
-
-
-    for(int i=0;i < size ; i++){
-        if(arr[i]==key){
-            for(int j=i; j<size-1;j++){
-                arr[j]=arr[j+1];
+    for(int i=0; i<size; i++){
+        if(arr[i]>64 && arr[i]<91){
+            char temp=arr[i+1];
+            for(int j=size; j>i; j--){
+                arr[j]=arr[j-1];
             }
-            size--;
+            arr[i+1]=arr[i]+32;
+            size++;
         }
     }
 
-    for(int i=0; i<size; i++){
-        cout<<arr[i]<<" ";
-    }
+    for(int i=0; i<size; i++)    cout<<arr[i]<<" ";
 }
