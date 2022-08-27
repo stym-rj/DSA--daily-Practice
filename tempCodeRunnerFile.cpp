@@ -1,28 +1,28 @@
-// Consider Jeevan is visiting Nehru Zoo. She has seen there are N animals standing in a row. She have written name of all animals in sequence one after the other. There are few animals which are repeating in the list. Write a program to remove these duplicate names.
+#include<iostream>
+using namespace std;
+int main(){
+    int size;
+    cin>>size;
 
-// Input Format
+    int arr[size];
+    for(int i=0;i<size; i++)    cin>>arr[i];
 
-// The first line will be containing one Integer representing a number of animals N. The second line will contain N Strings representing the names of the animals with space.
+    int key;
+    cin>>key;
 
-// Constraints
+    int temp=-1;
 
-// 2
 
-// Output Format
+    for(int i=0;i < size ; i++){
+        if(arr[i]==key){
+            for(int j=i; j<size-1;j++){
+                arr[j]=arr[j+1];
+            }
+            size--;
+        }
+    }
 
-// The desired sequence of animals after removing duplicate animal names.
-
-// Sample Input 0
-
-// 5
-// Elephant Tiger Lion Tiger Deer
-// Sample Output 0
-
-// Elephant Tiger Lion Deer
-// Sample Input 1
-
-// 1
-// Sample Output 1
-
-// Invalid Input
-
+    for(int i=0; i<size; i++){
+        cout<<arr[i]<<" ";
+    }
+}

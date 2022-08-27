@@ -15,12 +15,14 @@ int main(){
 
     for(int i=0;i < size ; i++){
         if(arr[i]==key){
-            temp=i;
+            for(int j=i; j<size-1;j++){
+                arr[j]=arr[j+1];
+            }
+            size--;
         }
     }
 
     for(int i=0; i<size; i++){
-        if(i==temp)     continue;
         cout<<arr[i]<<" ";
     }
 }
