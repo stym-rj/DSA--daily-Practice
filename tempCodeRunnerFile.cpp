@@ -18,7 +18,7 @@ int main(){
             for(int j=size; j>i; j--){
                 arr[j]=arr[j-1];
             }
-            arr[i+1]=arr[i]+32;
+            arr[i+1]=arr[i]+32; 
             size++;
         }
     }
