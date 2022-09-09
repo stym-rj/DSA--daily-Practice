@@ -99,5 +99,5 @@ int main(){
     }
 
     head->printPrime();
-    return 0;
+    return 0; 
 }
