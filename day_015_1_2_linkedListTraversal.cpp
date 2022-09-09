@@ -73,7 +73,7 @@ int LinkedList::count()
     int count = 0;
     int a;
 
-    while (temp != NULL)
+    while (temp != NULL) 
     {
         a = temp->data;
         temp = temp->link;
