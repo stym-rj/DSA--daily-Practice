@@ -1,60 +1,110 @@
-#include <bits/stdc++.h>
-
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-/*
- * Complete the 'timeConversion' function below.
- *
- * The function is expected to return a STRING.
- * The function accepts STRING s as parameter.
- */
+class node
+{
+public:
+    int data;
+    node *link;
+};
 
-string timeConversion(string s) {
-    string s_hr = "", s_min="", s_sec="", mer="";
-    for(int i=0;i<2; i++)   s_hr+=s[i];
-    for(int i=3;i<5; i++)   s_min+=s[i];
-    for(int i=6;i<8; i++)   s_sec+=s[i];
-    for(int i=8;i<10; i++)   mer+=s[i];
-    int hr= stoi(s_hr);
-    int min= stoi(s_min);
-    int sec= stoi(s_sec);
-    
-    if(mer=="AM"){
-        if(hr==12){
-            s[0]='0';
-            s[1]='0';
-        }
-        string ans="";
-        for(int i=0; i<8; i++){
-            ans+=s[i];
-        }
-        return ans;
+node *first, *temp;
+
+class LinkedList
+{
+public:
+    node *first, *last;
+    LinkedList();
+    void create();
+    int count();
+};
+LinkedList::LinkedList()
+{
+    first = NULL;
+    last = NULL;
+};
+
+void LinkedList::create()
+{
+    node *temp = new node();
+    cin >> temp->data;
+    temp->link = NULL;
+    if (first == NULL)
+    {
+        first = temp;
+        last = first;
     }
-    else{
-        string ans="";
-        if(hr==12){
-            for(int i=0; i<8; i++){
-                ans+=s[i];
-            }
-            return ans;
-        }
-        ans= to_string(hr+12);
-        for(int i=2; i<8; i++){
-            ans+=s[i];
-        }
-        return ans;
+    else
+    {
+        last->link = temp;
+        last = temp;
     }
+};
+
+int isprime(int n)
+{
+
+    if (n == 1 || n == 0)
+    {
+        return 0;
+    }
+    if (n == 2)
+    {
+        return 1;
+    }
+
+    for (int j = 2; j < n - 1; j++)
+    {
+        if (n % j == 0)
+            return 0;
+    }
+    return 1;
+}
+
+int LinkedList::count()
+{
+    node *temp;
+    temp = first;
+
+    int count = 0;
+    int a;
+
+    while (temp != NULL)
+    {
+        a = temp->data;
+        temp = temp->link;
+
+        if (isprime(a))
+            count++;
+    }
+    return count;
 }
 
 int main()
 {
-    string s;
-    getline(cin, s);
+    int n;
+    cin >> n;
 
-    string result = timeConversion(s);
+    if (n < 0)
+    {
+        cout << "Invalid Number";
+        return 0;
+    }
 
-    cout << result << "\n";
+    int i;
 
+    LinkedList l1;
+
+    for (i = 0; i < n; i++)
+    {
+        l1.create();
+    }
+
+    cout << l1.count();
 
     return 0;
 }
