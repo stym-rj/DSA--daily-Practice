@@ -21,6 +21,7 @@ class Node{
 
             return this;
         }
+        
 
         Node* sortedInsert(std:: string _name, int _strength){
             Node* temp= new Node(_name, _strength);
