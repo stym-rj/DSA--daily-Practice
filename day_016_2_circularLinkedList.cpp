@@ -47,7 +47,8 @@ class Node{
                 curr=curr->next;
             }while(curr!=this);
         }
-};
+        
+}; 
 
 int main(){
     Node *head=NULL;
