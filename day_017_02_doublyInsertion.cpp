@@ -1,3 +1,26 @@
+// After an announcement made in a lecture room, it was announced that the students are required to reach auditorium to attend a session. While the auditorium is already almost full and have random free seats, the students of the section decided that each one of them will be holding the address of the next student and the previous student. Means, each student here is aware about the seating of the two other students except the first and the last student to enter the auditorium, who are not aware of the previous and the next student respectively. Write a program to send 10 students to auditorium while each node stores roll number in the data part.
+
+// Input Format
+
+// 23 12 56 67 78 1 2 3 5 4
+
+// Constraints
+
+// -
+
+// Output Format
+
+// 23 12 56 67 78 1 2 3 5 4
+
+// Sample Input 0
+
+// 23 12 56 67 78 1 2 3 5 4
+// Sample Output 0
+
+// 23 12 56 67 78 1 2 3 5 4
+
+
+
 #include <iostream>
 
 class Node{
