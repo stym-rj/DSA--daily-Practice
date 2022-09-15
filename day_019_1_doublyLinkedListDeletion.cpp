@@ -1,64 +1,40 @@
-#include <iostream>
+#include<iostream>
+using namespace std;
 
-class Node{
-    public:
-        int data;
-        Node* next;
-        Node* prev;
-        Node(int _data){
-            data=_data;
-            next=NULL;
-            prev=NULL;
-        }
+int main() {
 
-        Node* insert(int _data){
-            Node* temp=new Node(_data);
-            if ( this== NULL)   return temp;
-
-            Node* curr=this;
-            while(curr->next!=NULL) curr= curr->next;
-            temp->prev=curr;
-            curr->next=temp;
-
-            return this;
-        }
-
-        Node* removeOdds(){
-            Node* curr=this;
-            while(curr!=NULL && curr->next!=NULL){
-                if(curr->data%2!=0){
-                    curr->prev->next=curr->next;
-                    curr->next->prev=curr->prev;
-                }
-                curr=curr->next;
-            }
-
-            return this;
-        }
-
-        void displayLL(){
-            Node* curr=this;
-            while(curr!=NULL){
-                std:: cout<<curr->data<<" ";
-                curr=curr->next;
-            }
-        }
-
-};
-
-int main(){
-    Node* head=NULL;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
     int size;
-    std:: cin>>size;
-
-    for(int i=0 ; i<size; i++){
-        int data;
-        std:: cin>>data;
-        head=head->insert(data);
+    cin>>size;
+    
+    // cout<<"Wrong Input.";
+    int count = 0;
+    if(size < 3 || size >11 ){
+        cout<<"Wrong Input.";
+        return 0;
     }
-
-    head=head->removeOdds();
-    head->displayLL();
-
+    int arr [ size ];
+    for ( int i =0 ; i<size ; i++){
+        int temp;
+        cin>>temp;
+        if( temp % 2 != 0)
+        {
+            // cout<<temp<<" ";
+            count++;
+        }
+        arr[i]=temp;
+    }
+    if(!count){  cout<<"No student is having odd roll number.";
+    return 0;
+    }
+    for ( int i =0 ; i<size ; i++){
+        
+        if( arr[i] % 2 == 0)
+        {
+            cout<<arr[i]<<" ";
+            // count++;
+        }
+        // arr[i]=temp;
+    }
     return 0;
 }
