@@ -1,3 +1,50 @@
+// Create a two-way linked list of N integer elements. Enter a number to be deleted and delete the second last occurrence of the entered number. The number of elements should be greater than 2 and less than equal to 20. If size is not in the mention range than program should display “Invalid list size” without asking for the second input. If the number to be deleted is not present or present only one time, display the message “Deletion not possible”.
+
+// Input Format
+
+// Your program should take three types of inputs. First input will represent the number of elements in the two-way linked list. Second type input will be the elements of the linked list from the first elements till last element. And the third input should be the value to be deleted.
+
+// Constraints
+
+// The number of elements (N) in the list should be 2 < N <= 20
+
+// Output Format
+
+// Your program should display the elements of the linked list in backward direction after deleted element. If any condition fails, it should display the corresponding mentioned messages.
+
+// Sample Input 0
+
+// 7
+// 1
+// 2
+// 3
+// 2
+// 4
+// 2
+// 5
+// 2
+// Sample Output 0
+
+// 5
+// 2
+// 4
+// 3
+// 2
+// 1
+// Sample Input 1
+
+// 3
+// 1
+// 2
+// 3
+// 2
+// Sample Output 1
+
+// Deletion not possible
+
+
+
+
 #include <iostream>
 
 class Node
