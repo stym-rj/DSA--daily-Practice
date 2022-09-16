@@ -43,8 +43,8 @@ class Node{
 
         curr=this;
         // std:: cout<<largest->data<<std:: endl;
-
-        while(curr->next!=largest){
+        if(curr==largest)   return curr->next;
+        while( curr->next!=largest ){
             // std:: cout<<"entered deletion traversal loop"<<std:: endl;
             curr=curr->next;
             // std:: cout<<"ended temp deletion traversal loop"<<std:: endl;
