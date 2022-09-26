@@ -5,141 +5,91 @@ class Node
 public:
     int data;
     Node *next;
-    Node *prev;
     Node(int _data)
     {
         data = _data;
         next = NULL;
-        prev = NULL;
     }
 
     Node *insert(int _data)
     {
+        // std:: cout<<"entered insert function"<<std:: endl;
         Node *temp = new Node(_data);
         if (this == NULL)
+        {
+            temp->next = temp;
             return temp;
-
-        Node *curr = this;
-        while (curr->next != NULL)
-            curr = curr->next;
-        curr->next = temp;
-        temp->prev = curr;
+        }
+        else
+        {
+            Node *curr = this;
+            while (curr->next != this)
+                curr = curr->next;
+            curr->next = temp;
+            temp->next = this;
+        }
 
         return this;
     }
 
-    void displayBack()
-    {
-        // std:: cout<< "entered display back function" <<std:: endl;
-        Node *curr = this;
-        while (curr->next != NULL)
-            curr = curr->next;
+    Node* deleteHead() {
+        Node* ans = this;
+        Node* curr = this;
 
-        while (curr != NULL)
-        {
-            std::cout << curr->data << std:: endl;
-            curr = curr->prev;
+        while (curr->next != ans)  curr = curr->next;
+        
+        if (curr == ans) {
+            return NULL;
         }
+        Node* temp = ans;
+        ans = ans->next;
+        curr->next = ans;
+        delete(temp);
+
+        return ans;
     }
 
-    Node *deleteSecondLastOccurance(int key)
+    void displayLL()
     {
-        Node *curr = this;
-        Node *last = NULL;
-        Node *secondLast = NULL;
-        int count = 0;
-
-        while (curr != NULL)
-        {
-            // std:: cout<<"entered deletion search loop"<<std:: endl;
-            if (curr->data == key && count == 0)
-            {
-                last = curr;
-                count++;
-            }
-            else if (curr->data == key && count > 0)
-            {
-                secondLast = last;
-                last = curr;
-                count++;
-            }
-            curr=curr->next;
-        }
-        // std:: cout<<"exited deletion search loop"<<std:: endl;
-        if (count < 2)
-        {
-            std::cout << "Deletion not possible" << std::endl;
-            return this;
-        }
-        // std:: cout<<secondLast->data<<std::endl;
-
-        curr = this;
-        if(secondLast==curr){
-            // std::cout<<"entered condition check "<< std :: endl;
-            Node* temp =secondLast;
-            curr=curr->next;
-            curr->prev=NULL;
-            delete (temp);
-
-            return curr;
-        }
-        else{
-            // std:: cout<< "entered else " <<std:: endl;
-            while (curr->next != secondLast)    curr = curr->next;
-            Node* temp=secondLast;
-            curr->next = secondLast->next;
-            curr->next->prev = curr;
-            delete(temp);
-        }
-
-        // std:: cout<< "returning from funciton" <<std :: endl;
-
-        return this;
-    }
-
-    int countNodes(){
-        // std:: cout<<"entered count nodes function" <<std:: endl;
-        Node* curr=this;
-        int count=0;
-        while(curr->next!=NULL){
-            // std:: cout<< " entered count nodes loop " <<std:: endl;
-            curr=curr->next;
-            count++;
-        }
-
-        return count;
+    Node *curr = this;
+    do
+    {
+        std::cout << curr->data << " ";
+        curr = curr->next;
+    } while (curr != this);
     }
 };
 
 int main()
 {
     Node *head = NULL;
+
     int size;
     std::cin >> size;
-    if (size < 3 || size > 20)
-    {
-        std::cout << "Invalid list size" << std::endl;
+    if(size < 0 || size > 1000) {
+        std :: cout << "Invalid Number" << std :: endl;
         return 0;
     }
     for (int i = 0; i < size; i++)
     {
-        int data;
-        std::cin >> data;
-        head = head->insert(data);
+        int a;
+        std::cin >> a;
+        head = head->insert(a);
     }
 
-    // head->displayBack();
+    if (head == NULL) {
+        std :: cout << "Underflow" << std :: endl;
+        return 0;
+    }
 
-    int beforeDeletionNodeCount=head->countNodes();
+    head = head->deleteHead();
 
-    int key;
-    std::cin >> key;
-    head = head->deleteSecondLastOccurance(key);
+    if(head == NULL) {
+        std :: cout << "CLL is Empty" << std :: endl;
+        return 0;
+    }
 
-    int afterDeletionNodeCount=head->countNodes();
-    // std:: cout<< " count after deletion done " <<std:: endl;
-    if(beforeDeletionNodeCount!=afterDeletionNodeCount)     head->displayBack();
-    // else    std:: cout<< "hello "<<std:: endl;
+    head->displayLL();
 
     return 0;
 }
