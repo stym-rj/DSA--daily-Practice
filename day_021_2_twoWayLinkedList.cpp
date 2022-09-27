@@ -1,3 +1,43 @@
+// Create a two-way linked list of N integer elements. Delete all the occurrences of the elements from the first occurrence till second last occurrence of the entered specific value. The number of elements should be greater than 2 and less than equal to 20 in the list. If size is not in the mention range than program should display "Invalid list size" without asking for the second input. If the number to be deleted is not present or present only one time, display the message "Deletion not possible".
+
+// Input Format
+
+// Your program should take three types of inputs. First input will represent the number of elements in the two-way linked list. Second type input will be the elements of the linked list from the first elements till last element. And the third input should be the value to be deleted.
+
+// Constraints
+
+// The number of elements (N) in the list should be 2 < N <=20
+
+// Output Format
+
+// Your program should display the elements of the linked list in backward direction after deleted elements. If any condition fails, it should display the corresponding mentioned messages.
+
+// Sample Input 0
+
+// 4
+// 1
+// 2
+// 3
+// 2
+// 2
+// Sample Output 0
+
+// 2
+// 3
+// 1
+// Sample Input 1
+
+// 3
+// 1
+// 2
+// 3
+// 2
+// Sample Output 1
+
+// Deletion not possible
+
+
+
 #include <iostream>
 
 class Node {
@@ -97,6 +137,7 @@ int main() {
     std :: cin >> size;
     if(size < 3 || size > 20) {
         std :: cout << "Invalid list size" << std :: endl;
+        return 0;
     }
 
     for (int i = 0; i < size; i++) {
@@ -108,7 +149,6 @@ int main() {
     int sizeBefore = head->sizeOfLL();
     // std :: cout <<  "---" << sizeBefore << std :: endl;
 
-    if (head == NULL)   return 0;
     int key;
     std :: cin >> key;
     head = head->deleteKey(key);
